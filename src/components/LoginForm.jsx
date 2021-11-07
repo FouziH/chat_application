@@ -4,6 +4,7 @@ import axios from "axios";
 const LoginForm = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("")
 
     const handleSubmit =  async (event) => {
         event.preventDefault();
@@ -23,6 +24,8 @@ const LoginForm = () => {
         }
         catch (error) {
             console.log("error is", error)
+            setError('Oops, incorrect credentials. Please try again!')
+
         }
 
         //
@@ -32,7 +35,7 @@ const LoginForm = () => {
     return (
       <div className="wrapper">
         <div className="form">
-          <h1>Chat Application</h1>
+          <h1 className="title">Chat Application</h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -52,8 +55,8 @@ const LoginForm = () => {
             />
             <div align="center">
                 <button type="submit" className="button"><span>Start Chatting</span></button>
-
             </div>
+            <p className="error">{error}</p>
             
           </form>
         </div>
