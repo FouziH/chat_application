@@ -5,15 +5,34 @@ const LoginForm = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (event) => {
+    const handleSubmit =  async (event) => {
         event.preventDefault();
+
+        const authObject = {
+          "Project-ID": "b17b4621-da49-4604-965c-90679ed82192",
+          "User-Name":userName,
+          "User-Secret" : password
+        };
+        try{
+           await axios.get('https://api.chatengine.io/chats', {headers: authObject})
+           localStorage.setItem("username",  userName);
+           localStorage.setItem("password", password)
+           
+           window.location.reload()
+
+        }
+        catch (error) {
+            console.log("error is", error)
+        }
+
+        //
 
     }
 
     return (
       <div className="wrapper">
         <div className="form">
-          <h1>Weekend Spike Chat Application</h1>
+          <h1>Chat Application</h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -41,3 +60,4 @@ const LoginForm = () => {
       </div>
     );
 }
+export default LoginForm
