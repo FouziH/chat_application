@@ -14,7 +14,7 @@ const LoginForm = () => {
           "User-Secret" : password
         };
         try{
-           await axios.get('https://api.chatengine.io.chats', {headers: authObject})
+           await axios.get('https://api.chatengine.io/chats', {headers: authObject})
            localStorage.setItem("username",  userName);
            localStorage.setItem("password", password)
            
@@ -32,7 +32,7 @@ const LoginForm = () => {
     return (
       <div className="wrapper">
         <div className="form">
-          <h1>Weekend Spike Chat Application</h1>
+          <h1>Chat Application</h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
