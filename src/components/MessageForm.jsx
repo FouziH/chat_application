@@ -20,6 +20,10 @@
         setMessage('')
 
     }
+    const handleUpload =(event) => {
+        sendMessage(creds, chatId, {files: event.target.value, text: ""})
+    
+    }
 
     return(
        <form className="message-form" onSubmit={handleSubmit}>
@@ -28,9 +32,15 @@
                <span className="image-button">
                    {<PictureOutlined  className="picture-icon"/>}
                </span>
-
            </label>
-           
+           <input 
+            type="file"
+            multiple={false}
+            id="upload-button"
+            style={{display: "none"}}
+            onChange={handleUpload}
+           />
+           <button type="submit" className="send-button"><SendOutlined /></button>
        </form>
     )
 }
