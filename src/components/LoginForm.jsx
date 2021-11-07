@@ -18,6 +18,7 @@ const LoginForm = () => {
            localStorage.setItem("username",  userName);
            localStorage.setItem("password", password)
            
+           window.location.reload()
 
         }
         catch (error) {
@@ -59,3 +60,4 @@ const LoginForm = () => {
       </div>
     );
 }
+export default LoginForm
