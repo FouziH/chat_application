@@ -13,8 +13,10 @@
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const text = value.trim();
+        const text = message.trim();
         if(text.length > 0 ) sendMessage(creds, chatId, { text })
+
+        setMessage('')
 
     }
 
